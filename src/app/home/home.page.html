@@ -1,0 +1,43 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Mis Tareas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="title-block">
+    <div class="heading">Lista de Tareas</div>
+  </div>
+  
+  <mat-list>
+    <ion-list-header>
+      <ion-label>Tareas</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let note of (notes | async)">
+      <ion-thumbnail slot="start">
+        <img src="{{note.image}}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{note.title}}</h2>
+        <p>{{note.content}}</p>
+        <p>Creada en: {{note.createdAt|date}}</p>
+      </ion-label>
+      <button mat-raised-button color="accent" fill="outline" slot="end" [routerLink]="'/view-note/'+note.id">Ver</button>
+    </ion-item>
+  </mat-list>
+ 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="'/add-note'">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <footer style="position:absolute;bottom: 0;margin-bottom: 0;background-color: rgb(65, 65, 65); width: 100%; padding:2%;">
+
+    <a style="text-decoration: none;" href="https://github.com/DATAJOAQUIN/HitoIonic" target="_blank"><h4 style="text-align: center;color: white;"><i class="fa fa-github" style="font-size:36px; color:white;"></i> &nbsp; Github</h4></a>   
+
+
+  </footer>
+</ion-content>
